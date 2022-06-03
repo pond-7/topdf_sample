@@ -48,12 +48,12 @@ CMD [ "sleep", "infinity" ]
 
 
 # # wkhtmltopdf をインストールする。
-RUN apt install wkhtmltopdf
+RUN sudo apt install -y wkhtmltopdf
 
 # 日本語フォントとして Noto Fonts をインストールする。
 RUN wget https://noto-website.storage.googleapis.com/pkgs/Noto-unhinted.zip \
  && unzip -d NotoSansJapanese Noto-unhinted.zip \
  && mkdir -p /usr/share/fonts/opentype \
- && mv -fv ./NotoSansJapanese /usr/share/fonts/opentype/NotoSansJapanese \
- && rm -rfv Noto-unhinted.zip \
+	&& sudo mv -fv ./NotoSansJapanese /usr/share/fonts/opentype/NotoSansJapanese \
+	&& sudo rm -rfv Noto-unhinted.zip \
  && fc-cache -fv
